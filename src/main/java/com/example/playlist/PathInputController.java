@@ -73,7 +73,7 @@ public class PathInputController{
 
     }
     private boolean isMusicFile(String path){
-        String[] musicExtensions = new String[]{"mp3","wav","flac"};
+        String[] musicExtensions = new String[]{"mp3","wav"};
         String extension = path.split("\\.")[1];
         for (String item:musicExtensions
              ) {

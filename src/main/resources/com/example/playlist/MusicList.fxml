@@ -4,16 +4,15 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #564869;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.playlist.MusicListController">
+<AnchorPane fx:id="musicTablePane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #564869;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.playlist.MusicListController">
    <children>
-      <TableView layoutX="14.0" layoutY="14.0" prefHeight="674.0" prefWidth="900.0" style="-fx-background-color: #564869;">
+      <TableView fx:id="musicTable" layoutX="14.0" layoutY="14.0" prefHeight="674.0" prefWidth="900.0" style="-fx-background-color: #564869; -fx-border-color: black;">
          <columns>
-            <TableColumn editable="false" prefWidth="399.0" style="-fx-background-color: #b00bbf; -fx-text-fill: #ffcb00;" text="Имя" />
-            <TableColumn editable="false" prefWidth="167.0" style="-fx-background-color: #b00bbf; -fx-text-fill: #ffcb00;" text="Название" />
-            <TableColumn editable="false" prefWidth="178.0" style="-fx-background-color: #b00bbf; -fx-text-fill: #ffcb00;" text="Испольнитель" />
-            <TableColumn editable="false" minWidth="3.0" prefWidth="98.0" style="-fx-background-color: #b00bbf; -fx-text-fill: #ffcb00;" text="Длительность" />
-            <TableColumn editable="false" minWidth="0.0" prefWidth="56.0" style="-fx-background-color: #b00bbf; -fx-text-fill: #ffcb00;" text="Размер" />
+            <TableColumn fx:id="fileNameColumn" editable="false" prefWidth="399.0" style="-fx-background-color: #b00bbf; -fx-text-fill: #ffcb00; -fx-border-color: black;" text="Имя" />
+            <TableColumn fx:id="musicNameColumn" editable="false" prefWidth="167.0" style="-fx-background-color: #b00bbf; -fx-text-fill: #ffcb00; -fx-border-color: black;" text="Название" />
+            <TableColumn fx:id="artistColumn" editable="false" prefWidth="178.0" style="-fx-background-color: #b00bbf; -fx-text-fill: #ffcb00; -fx-border-color: black;" text="Испольнитель" />
+            <TableColumn fx:id="lengthColumn" editable="false" minWidth="3.0" prefWidth="98.0" style="-fx-background-color: #b00bbf; -fx-text-fill: #ffcb00; -fx-border-color: black;" text="Длительность" />
+            <TableColumn fx:id="sizeColumn" editable="false" minWidth="0.0" prefWidth="56.0" style="-fx-background-color: #b00bbf; -fx-text-fill: #ffcb00; -fx-border-color: black;" text="Размер" />
          </columns>
       </TableView>
    </children>
