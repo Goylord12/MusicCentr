@@ -2,18 +2,33 @@ package com.example.playlist;
 
 import javafx.collections.MapChangeListener;
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
+import java.util.Map;
 
 public class MusicFile {
     Media mediaFile;
+    MediaPlayer mediaPlayer;
     String fileName;
     String title;
     String artist;
     String length;
+    String size;
 
     public MusicFile(File file){
         mediaFile = new Media(file.toURI().toString());
+
+        mediaPlayer = new MediaPlayer(mediaFile);
+
+
+        mediaPlayer.setOnReady(new Runnable() {
+
+            @Override
+            public void run() {length = String.valueOf(mediaFile.getDuration().toMinutes()).substring(0,4)+" min";
+            }
+        });
+
         fileName= file.getName();
         mediaFile.getMetadata().addListener((MapChangeListener.Change<? extends String, ? extends Object> c) -> {
             if (c.wasAdded()) {
@@ -24,9 +39,10 @@ public class MusicFile {
                 }
             }
         });
-//        artist = String.valueOf(mediaFile.getMetadata().get("artist"));
-//        title = String.valueOf(mediaFile.getMetadata().get("Title"));
-//        duration = String.valueOf(mediaFile.getMetadata().get("length"));
+        size = file.length() / (1024 * 1024) +"MB";
+        System.out.print(fileName +" "+ title+" "+ artist+"\n");
+
+
     }
 
     public String getArtist() {
@@ -43,5 +59,9 @@ public class MusicFile {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getSize() {
+        return size;
     }
 }

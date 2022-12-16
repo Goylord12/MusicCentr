@@ -38,6 +38,7 @@ public class PathInputController{
 
     @FXML
    void initialize() {
+
         assert PathInputPane != null : "fx:id=\"PathInputPane\" was not injected: check your FXML file 'Path-Input.fxml'.";
         assert approveButton != null : "fx:id=\"approveButton\" was not injected: check your FXML file 'Path-Input.fxml'.";
         assert pathInputField != null : "fx:id=\"pathInputField\" was not injected: check your FXML file 'Path-Input.fxml'.";

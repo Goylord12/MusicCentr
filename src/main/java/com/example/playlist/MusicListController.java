@@ -57,6 +57,7 @@ public class MusicListController {
         fileNameColumn.setCellValueFactory(new PropertyValueFactory<>("FileName"));
         lengthColumn.setCellValueFactory(new PropertyValueFactory<>("Length"));
         artistColumn.setCellValueFactory(new PropertyValueFactory<>("Artist"));
+        sizeColumn.setCellValueFactory(new PropertyValueFactory<>("Size"));
     }
     public void setFileList(ArrayList<File> fileList){
         this.fileList = new ArrayList<>(fileList);
@@ -66,6 +67,7 @@ public class MusicListController {
             data.add(new MusicFile(item));
         }
         musicTable.setItems(data);
+        musicTable.refresh();
     }
 
 }
