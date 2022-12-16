@@ -49,7 +49,6 @@ public class PathInputController{
                 for ( File file : directory.listFiles() ){
                     if ( file.isFile() && isMusicFile(file.getPath())) {
                         fileList.add(file);
-                        System.out.print(file);
                     }
                 }
 
