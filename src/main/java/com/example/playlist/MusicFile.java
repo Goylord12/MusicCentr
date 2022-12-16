@@ -5,9 +5,10 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
-import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class MusicFile {
+
     Media mediaFile;
     MediaPlayer mediaPlayer;
     String fileName;
@@ -25,7 +26,11 @@ public class MusicFile {
         mediaPlayer.setOnReady(new Runnable() {
 
             @Override
-            public void run() {length = String.valueOf(mediaFile.getDuration().toMinutes()).substring(0,4)+" min";
+            public void run() {
+                long minutes = TimeUnit.MILLISECONDS.toMinutes(Integer.parseInt(String.valueOf(mediaPlayer.getTotalDuration()).split("\\.")[0]));
+                long seconds = TimeUnit.MILLISECONDS.toSeconds(Integer.parseInt(String.valueOf(mediaPlayer.getTotalDuration()).split("\\.")[0]));
+                length = minutes +":"+((seconds-minutes*60)<10?"0"+(seconds-minutes*60):(seconds-minutes*60))+" min";
+
             }
         });
 

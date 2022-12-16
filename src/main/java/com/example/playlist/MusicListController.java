@@ -77,6 +77,7 @@ public class MusicListController {
             data.add(new MusicFile(item));
         }
         musicTable.setItems(data);
+
     }
     public void play(){
         if(musicTable.getSelectionModel().getSelectedItems().get(0)!=null) {
@@ -102,13 +103,12 @@ public class MusicListController {
         }
 
     }
-    public void pause(){
-        if(mediaPlayer!=null){
-            if(mediaPlayer.getStatus()!= MediaPlayer.Status.PAUSED|| mediaPlayer.getStatus() != MediaPlayer.Status.STOPPED){
+    public void pause() {
+        if (mediaPlayer != null) {
+            if (mediaPlayer.getStatus() != MediaPlayer.Status.PAUSED || mediaPlayer.getStatus() != MediaPlayer.Status.STOPPED) {
                 mediaPlayer.pause();
             }
         }
     }
-
 }
 
