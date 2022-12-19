@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -59,6 +60,17 @@ public class MusicListController {
         lengthColumn.setCellValueFactory(new PropertyValueFactory<>("Length"));
         artistColumn.setCellValueFactory(new PropertyValueFactory<>("Artist"));
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("Size"));
+
+        musicTable.setRowFactory(tv -> new TableRow<MusicFile>() {
+            @Override
+            protected void updateItem(MusicFile item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item == null)
+                    setStyle("-fx-text-fill: #baffba;");
+            }
+        });
+
+
         playButton.setOnAction(actionEvent -> {
            play();
         });

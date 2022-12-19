@@ -49,7 +49,6 @@ public class MusicFile {
             }
         });
         size = file.length() / (1024 * 1024) +"MB";
-        System.out.print(fileName +" "+ title+" "+ artist+"\n");
 
 
     }
