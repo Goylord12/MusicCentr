@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,7 +13,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class MusicListController {
@@ -49,7 +47,7 @@ public class MusicListController {
     @FXML
     private TableColumn<MusicFile, String> sizeColumn;
     @FXML
-    private TableView<MusicFile> musicTable;
+    public TableView<MusicFile> musicTable;
 
     @FXML
     private AnchorPane musicTablePane;
@@ -70,6 +68,7 @@ public class MusicListController {
         });
     }
     public void setFileList(ArrayList<File> fileList){
+        MusicFile.setController(this);
         this.fileList = new ArrayList<>(fileList);
         ObservableList<MusicFile> data = FXCollections.observableArrayList();
         for (File item:fileList

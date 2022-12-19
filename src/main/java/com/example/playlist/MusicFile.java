@@ -9,6 +9,8 @@ import java.util.concurrent.TimeUnit;
 
 public class MusicFile {
 
+    static MusicListController controller;
+
     Media mediaFile;
     MediaPlayer mediaPlayer;
     String fileName;
@@ -30,7 +32,9 @@ public class MusicFile {
                 long minutes = TimeUnit.MILLISECONDS.toMinutes(Integer.parseInt(String.valueOf(mediaPlayer.getTotalDuration()).split("\\.")[0]));
                 long seconds = TimeUnit.MILLISECONDS.toSeconds(Integer.parseInt(String.valueOf(mediaPlayer.getTotalDuration()).split("\\.")[0]));
                 length = minutes +":"+((seconds-minutes*60)<10?"0"+(seconds-minutes*60):(seconds-minutes*60))+" min";
-
+                if(controller!=null){
+                    controller.musicTable.refresh();
+                }
             }
         });
 
@@ -52,6 +56,9 @@ public class MusicFile {
 
     public String getArtist() {
         return artist;
+    }
+    public static void setController(MusicListController cnt){
+        controller = cnt;
     }
 
     public String getLength() {
