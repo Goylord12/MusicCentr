@@ -11,6 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -21,6 +23,10 @@ public class PathInputController{
 
     @FXML
     private ResourceBundle resources;
+
+
+    @FXML
+    private ImageView iconView;
 
     @FXML
     private URL location;
@@ -38,28 +44,17 @@ public class PathInputController{
 
     @FXML
    void initialize() {
-
-        assert PathInputPane != null : "fx:id=\"PathInputPane\" was not injected: check your FXML file 'Path-Input.fxml'.";
-        assert approveButton != null : "fx:id=\"approveButton\" was not injected: check your FXML file 'Path-Input.fxml'.";
-        assert pathInputField != null : "fx:id=\"pathInputField\" was not injected: check your FXML file 'Path-Input.fxml'.";
-        assert errorText != null : "fx:id=\"errorText\" was not injected: check your FXML file 'Path-Input.fxml'.";
+        //установка изображения
+        iconView.setImage(new Image("file:assets/Icon.png"));
         approveButton.setOnAction(actionEvent -> {
-            try {
-                File directory = new File(pathInputField.getText());
-                for ( File file : directory.listFiles() ){
-                    if ( file.isFile() && isMusicFile(file.getPath())) {
-                        fileList.add(file);
-                    }
-                }
-
-            } catch (Exception ex) {
-                errorText.setVisible(true);
-            }
+            //проверка и перебор файлов в папке
+            getFiles();
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("MusicList.fxml"));
             try{
                 Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
                 Stage stage = new Stage();
+                stage.getIcons().add(new Image("file:assets/Icon.png"));
                 stage.setTitle("Playlist");
                 stage.setScene(scene);
                 stage.show();
@@ -69,9 +64,11 @@ public class PathInputController{
             catch (IOException ex){
                 System.out.print(ex.getMessage());
             }
+
         });
 
     }
+    //проверка расширения файла
     private boolean isMusicFile(String path){
         String[] musicExtensions = new String[]{"mp3","wav"};
         String extension = path.split("\\.")[1];
@@ -82,6 +79,19 @@ public class PathInputController{
             }
         }
         return false;
+    }
+    public void getFiles(){
+        try {
+            File directory = new File(pathInputField.getText());
+            for ( File file : directory.listFiles() ){
+                if ( file.isFile() && isMusicFile(file.getPath())) {
+                    fileList.add(file);
+                }
+            }
+
+        } catch (Exception ex) {
+            errorText.setVisible(true);
+        }
     }
 
 }

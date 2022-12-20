@@ -12,7 +12,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -64,6 +63,8 @@ public class MusicListController {
         artistColumn.setCellValueFactory(new PropertyValueFactory<>("Artist"));
         sizeColumn.setCellValueFactory(new PropertyValueFactory<>("Size"));
 
+        //визуальная отдача кнопок
+
         playButton.setOnMouseEntered(mouseEvent -> {
             playButton.setScaleX(1.1);
             playButton.setScaleY(1.1);
@@ -81,15 +82,11 @@ public class MusicListController {
             pauseButton.setScaleX(1);
             pauseButton.setScaleY(1);
         });
+        playButton.setOnAction(actionEvent -> play());
 
-        playButton.setOnAction(actionEvent -> {
-           play();
-        });
-
-        pauseButton.setOnAction(actionEvent -> {
-            pause();
-        });
+        pauseButton.setOnAction(actionEvent -> pause());
     }
+    //создание списка с музыкальными файлами и установка этого списка в таблицу
     public void setFileList(ArrayList<File> fileList){
         MusicFile.setController(this);
         this.fileList = new ArrayList<>(fileList);
@@ -101,6 +98,7 @@ public class MusicListController {
         musicTable.setItems(data);
 
     }
+    //проигрывание музыки
     public void play(){
         if(musicTable.getSelectionModel().getSelectedItems().size()==1) {
             if(nowPlaying==null||!nowPlaying.equals(musicTable.getSelectionModel().getSelectedItems().get(0))) {
@@ -132,6 +130,7 @@ public class MusicListController {
         }
 
     }
+    //пауза
     public void pause() {
         if (mediaPlayer != null) {
             if (mediaPlayer.getStatus() != MediaPlayer.Status.PAUSED || mediaPlayer.getStatus() != MediaPlayer.Status.STOPPED) {

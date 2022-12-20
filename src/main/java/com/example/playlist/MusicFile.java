@@ -7,6 +7,7 @@ import javafx.scene.media.MediaPlayer;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+//класс для представления файлов музыки
 public class MusicFile {
 
     static MusicListController controller;
