@@ -11,14 +11,13 @@ import java.util.concurrent.TimeUnit;
 public class MusicFile {
 
     static MusicListController controller;
-
     Media mediaFile;
     MediaPlayer mediaPlayer;
-    String fileName;
-    String title;
-    String artist;
-    String length;
-    String size;
+    private final String fileName;
+    private String title;
+    private String artist;
+    private String length;
+    private final String size;
 
     public MusicFile(File file){
         mediaFile = new Media(file.toURI().toString());
@@ -40,7 +39,7 @@ public class MusicFile {
         });
 
         fileName= file.getName();
-        mediaFile.getMetadata().addListener((MapChangeListener.Change<? extends String, ? extends Object> c) -> {
+        mediaFile.getMetadata().addListener((MapChangeListener.Change<? extends String, ?> c) -> {
             if (c.wasAdded()) {
                 if ("artist".equals(c.getKey())) {
                     artist = c.getValueAdded().toString();

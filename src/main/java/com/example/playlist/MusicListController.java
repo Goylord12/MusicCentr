@@ -19,9 +19,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 public class MusicListController {
-    MusicFile nowPlaying;
-    MediaPlayer mediaPlayer;
-    ArrayList<File> fileList;
+    private MusicFile nowPlaying;
+   private MediaPlayer mediaPlayer;
+   ArrayList<File> fileList;
 
     @FXML
     private ResourceBundle resources;

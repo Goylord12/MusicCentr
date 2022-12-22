@@ -8,7 +8,7 @@
 
 <AnchorPane fx:id="musicTablePane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #564869;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.playlist.MusicListController">
    <children>
-      <TableView fx:id="musicTable" layoutX="14.0" layoutY="14.0" prefHeight="674.0" prefWidth="900.0" style="-fx-background-color: #564869; -fx-border-color: black; -fx-selection-bar: red;">
+      <TableView fx:id="musicTable" layoutX="14.0" layoutY="14.0" prefHeight="674.0" prefWidth="900.0" style="-fx-background-color: #564869; -fx-border-color: black; -fx-selection-bar: blue;">
          <columns>
             <TableColumn fx:id="fileNameColumn" editable="false" minWidth="399.0" prefWidth="399.0" style="-fx-background-color: rgba(176, 11, 191, 0.75); -fx-text-fill: #ffcb00; -fx-border-color: black; -fx-selection-bar: yellow;" text="Имя" />
             <TableColumn fx:id="musicNameColumn" editable="false" minWidth="167.0" prefWidth="167.0" style="-fx-background-color: rgba(176, 11, 191, 0.75); -fx-text-fill: #ffcb00; -fx-border-color: black; -fx-selection-bar: blue;" text="Название" />

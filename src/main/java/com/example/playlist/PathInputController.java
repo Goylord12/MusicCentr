@@ -17,7 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class PathInputController{
+public class PathInputController {
 
     ArrayList<File> fileList = new ArrayList<>();
 
@@ -43,7 +43,7 @@ public class PathInputController{
     private TextField pathInputField;
 
     @FXML
-   void initialize() {
+    void initialize() {
         //установка изображения
         iconView.setImage(new Image("file:assets/Icon.png"));
         approveButton.setOnAction(actionEvent -> {
@@ -51,44 +51,46 @@ public class PathInputController{
             getFiles();
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("MusicList.fxml"));
-            try{
-                Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
-                Stage stage = new Stage();
-                stage.getIcons().add(new Image("file:assets/Icon.png"));
-                stage.setTitle("Playlist");
-                stage.setScene(scene);
-                stage.show();
-                MusicListController musicListController = fxmlLoader.getController();
-                musicListController.setFileList(fileList);
+            if(!errorText.isVisible()) {
+                try {
+                    Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
+                    Stage stage = new Stage();
+                    stage.getIcons().add(new Image("file:assets/Icon.png"));
+                    stage.setTitle("Playlist");
+                    stage.setScene(scene);
+                    stage.show();
+                    MusicListController musicListController = fxmlLoader.getController();
+                    musicListController.setFileList(fileList);
+                } catch (IOException ex) {
+                    System.out.print(ex.getMessage());
+                }
             }
-            catch (IOException ex){
-                System.out.print(ex.getMessage());
-            }
-
         });
 
     }
+
     //проверка расширения файла
-    private boolean isMusicFile(String path){
-        String[] musicExtensions = new String[]{"mp3","wav"};
+    private boolean isMusicFile(String path) {
+        String[] musicExtensions = new String[]{"mp3", "wav"};
         String extension = path.split("\\.")[1];
-        for (String item:musicExtensions
-             ) {
-            if(item.equalsIgnoreCase(extension)){
+        for (String item : musicExtensions
+        ) {
+            if (item.equalsIgnoreCase(extension)) {
                 return true;
             }
         }
         return false;
     }
-    public void getFiles(){
+
+    public void getFiles() {
         try {
             File directory = new File(pathInputField.getText());
-            for ( File file : directory.listFiles() ){
-                if ( file.isFile() && isMusicFile(file.getPath())) {
+            for (File file : directory.listFiles()) {
+                if (file.isFile() && isMusicFile(file.getPath())) {
                     fileList.add(file);
                 }
             }
-
+            errorText.setVisible(false);
         } catch (Exception ex) {
             errorText.setVisible(true);
         }
