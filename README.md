@@ -1,8 +1,9 @@
 # MusicPlaylist
-
+![Icon](https://user-images.githubusercontent.com/56436385/209628765-e1de785c-28c7-4d3b-8b32-8ff49a9d71b7.png)
 Приложение предназначено для помощи пользователю в поиске и воспроизведении файлов.
 
 ## Установка
+
 
 Описание процесса установки программы и необходимых компонентов описаны [здесь](https://github.com/Sos0Burger/MusicPlaylist/wiki/%238-%D0%A0%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F)
 
