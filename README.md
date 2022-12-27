@@ -21,7 +21,7 @@
 * [Maven](https://maven.apache.org/) - Менеджер зависимостей
 * [JUnit](https://junit.org) - фреймворк для модульного тестирования
 
-## Authors
+## Авторы
 
 * **Егор** - *Сделал всю работу* - [SosoBurger](https://github.com/SosoBurger)
 
